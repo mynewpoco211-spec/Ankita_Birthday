@@ -68,7 +68,7 @@ h1,h2,h3{
 }
 
 h1{
-    font-size:clamp(38px,10vw,75px);
+    font-size:clamp(40px,10vw,75px);
     margin-bottom:15px;
 }
 
@@ -97,9 +97,11 @@ p{
     text-shadow:0 0 15px rgba(255,100,190,.7);
 }
 
+/* BUTTON */
+
 .btn{
     border:none;
-    padding:14px 25px;
+    padding:15px 28px;
     border-radius:50px;
     background:linear-gradient(135deg,#ff4f9a,#a855f7);
     color:white;
@@ -115,7 +117,57 @@ p{
     transform:translateY(-3px) scale(1.03);
 }
 
-/* MUSIC */
+.btn:active{
+    transform:scale(.96);
+}
+
+/* START SCREEN */
+
+.start-card{
+    padding:40px 22px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    box-shadow:0 20px 70px rgba(0,0,0,.3);
+}
+
+.open-heart{
+    font-size:80px;
+    animation:heartbeat 1.3s infinite;
+    margin-bottom:15px;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1)
+    }
+    50%{
+        transform:scale(1.15)
+    }
+}
+
+.start-text{
+    font-size:17px;
+    margin-bottom:28px;
+}
+
+.start-btn{
+    font-size:17px;
+    padding:17px 35px;
+    animation:pulseButton 2s infinite;
+}
+
+@keyframes pulseButton{
+    0%,100%{
+        box-shadow:0 10px 30px rgba(255,60,150,.25);
+    }
+    50%{
+        box-shadow:0 0 35px rgba(255,80,180,.65);
+    }
+}
+
+/* MUSIC BUTTON */
 
 .music-btn{
     position:fixed;
@@ -133,35 +185,10 @@ p{
     font-size:20px;
 }
 
-/* OPENING */
-
-.open-heart{
-    font-size:80px;
-    animation:heartbeat 1.3s infinite;
-    margin-bottom:15px;
-}
-
-@keyframes heartbeat{
-    0%,100%{
-        transform:scale(1)
-    }
-    50%{
-        transform:scale(1.15)
-    }
-}
-
-.opening-card{
-    padding:35px 22px;
-    border-radius:30px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.12);
-    backdrop-filter:blur(15px);
-}
-
 /* MEMORY */
 
 .memory-title{
-    margin-bottom:25px;
+    margin-bottom:10px;
 }
 
 .memory-card{
@@ -232,28 +259,6 @@ p{
     height:100px;
     background:linear-gradient(90deg,#ff8cba,#ff4f9a);
     border-radius:10px 10px 25px 25px;
-    position:relative;
-}
-
-.cake-body:before,
-.cake-body:after{
-    content:"";
-    position:absolute;
-    width:25px;
-    height:40px;
-    background:#fff;
-    border-radius:50%;
-    opacity:.7;
-}
-
-.cake-body:before{
-    left:30px;
-    top:15px;
-}
-
-.cake-body:after{
-    right:35px;
-    top:30px;
 }
 
 .plate{
@@ -308,10 +313,6 @@ p{
 
 .flame.off{
     display:none;
-}
-
-.cake-note{
-    margin-top:15px;
 }
 
 /* GIFT */
@@ -408,7 +409,6 @@ p{
 
 .typing{
     min-height:100px;
-    font-size:16px;
 }
 
 /* HEARTS */
@@ -423,7 +423,7 @@ p{
 
 @keyframes floatHeart{
     0%{
-        transform:translateY(0) scale(.6) rotate(0);
+        transform:translateY(0) scale(.6);
         opacity:0;
     }
     10%{
@@ -461,8 +461,8 @@ p{
         padding:20px 12px;
     }
 
-    .opening-card{
-        padding:30px 18px;
+    .start-card{
+        padding:35px 18px;
     }
 
     .open-heart{
@@ -481,18 +481,11 @@ p{
         transform:scale(.9);
     }
 
-    .gift{
-        transform:scale(.9);
-    }
-
     .final-photo{
         width:160px;
         height:160px;
     }
 
-    .btn{
-        padding:13px 20px;
-    }
 }
 
 </style>
@@ -500,44 +493,47 @@ p{
 
 <body>
 
-<!-- MUSIC BUTTON -->
 
-<button class="music-btn" onclick="toggleMusic()" id="musicBtn">
-🎵
-</button>
+<!-- MUSIC -->
 
-<audio id="music" loop>
+<audio id="birthdayMusic" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<button class="music-btn" id="musicButton" onclick="toggleMusic()">
+🎵
+</button>
+
 
 <!-- =========================
-     PAGE 1
+     START SCREEN
 ========================= -->
 
 <section class="page active" id="page1">
 
 <div class="container">
 
-<div class="opening-card">
+<div class="start-card">
 
-<div class="open-heart">❤️</div>
+<div class="open-heart">
+❤️
+</div>
 
 <p class="small">
-A little surprise for
+A little surprise has been waiting for you...
 </p>
 
 <h1 class="glow">
-Ankita
+Hey Ankita!
 </h1>
 
-<p class="subtitle">
+<p class="start-text">
 Some memories are too beautiful<br>
 to be forgotten...
 </p>
 
-<button class="btn" onclick="nextPage(2)">
-✨ Open Your Surprise
+<button class="btn start-btn" onclick="startExperience()">
+✨ Tap to Start
 </button>
 
 </div>
@@ -548,7 +544,7 @@ to be forgotten...
 
 
 <!-- =========================
-     PAGE 2 - MEMORY
+     MEMORY
 ========================= -->
 
 <section class="page" id="page2">
@@ -580,7 +576,7 @@ The Beginning ❤️
 </h3>
 
 <p class="memory-text" id="memoryText">
-Every beautiful story has a beginning...
+The little smile that started a beautiful story...
 </p>
 
 </div>
@@ -607,7 +603,7 @@ Next →
 
 
 <!-- =========================
-     PAGE 3 - CAKE
+     CAKE
 ========================= -->
 
 <section class="page" id="page3">
@@ -653,8 +649,8 @@ then blow out the candles.
 
 </div>
 
-<p class="cake-note" id="cakeNote">
-Tap the cake to blow out the candles 🕯️
+<p id="cakeNote">
+Tap the button to blow out the candles 🕯️
 </p>
 
 <button class="btn" onclick="blowCandles()">
@@ -673,7 +669,7 @@ Tap the cake to blow out the candles 🕯️
 
 
 <!-- =========================
-     PAGE 4 - GIFT
+     GIFT
 ========================= -->
 
 <section class="page" id="page4">
@@ -732,14 +728,12 @@ wonderful person you are. ✨
 
 
 <!-- =========================
-     PAGE 5 - FINAL
+     FINAL
 ========================= -->
 
 <section class="page" id="page5">
 
 <div class="container">
-
-<!-- IMPORTANT: CORRECT PHOTO NAME -->
 
 <img
 class="final-photo"
@@ -778,47 +772,57 @@ Ankita! 🎂❤️
 <script>
 
 /* =========================
-   PAGE SYSTEM
-========================= */
-
-let currentPage = 1;
-
-function nextPage(pageNumber){
-
-    document.querySelectorAll('.page').forEach(page=>{
-        page.classList.remove('active');
-    });
-
-    document.getElementById('page' + pageNumber)
-        .classList.add('active');
-
-    currentPage = pageNumber;
-
-    if(pageNumber === 5){
-
-        startTyping();
-        startHearts();
-
-    }
-
-    window.scrollTo({
-        top:0,
-        behavior:'smooth'
-    });
-}
-
-
-/* =========================
    MUSIC
 ========================= */
 
 const music =
-document.getElementById('music');
+document.getElementById("birthdayMusic");
 
-const musicBtn =
-document.getElementById('musicBtn');
+const musicButton =
+document.getElementById("musicButton");
 
 let musicPlaying = false;
+
+
+/* START EXPERIENCE */
+
+function startExperience(){
+
+    /*
+       This click is the user's interaction.
+       Therefore mobile browser can start the music.
+    */
+
+    music.volume = 0.65;
+
+    music.play()
+    .then(()=>{
+
+        musicPlaying = true;
+
+        musicButton.innerHTML = "🔊";
+
+    })
+    .catch(()=>{
+
+        musicPlaying = false;
+
+        musicButton.innerHTML = "🎵";
+
+    });
+
+
+    /* Go to Memory Journey */
+
+    nextPage(2);
+
+    /* Start hearts */
+
+    startHearts();
+}
+
+
+/* MUSIC ON/OFF */
 
 function toggleMusic(){
 
@@ -828,22 +832,51 @@ function toggleMusic(){
 
         musicPlaying = false;
 
-        musicBtn.innerHTML = "🎵";
+        musicButton.innerHTML = "🎵";
 
     }else{
 
-        music.play().catch(()=>{});
+        music.play()
+        .then(()=>{
 
-        musicPlaying = true;
+            musicPlaying = true;
 
-        musicBtn.innerHTML = "🔊";
+            musicButton.innerHTML = "🔊";
+
+        })
+        .catch(()=>{});
 
     }
 }
 
 
 /* =========================
-   MEMORY JOURNEY
+   PAGE SYSTEM
+========================= */
+
+function nextPage(pageNumber){
+
+    document.querySelectorAll(".page")
+    .forEach(page=>{
+        page.classList.remove("active");
+    });
+
+    document.getElementById("page" + pageNumber)
+        .classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    if(pageNumber === 5){
+        startTyping();
+    }
+}
+
+
+/* =========================
+   MEMORY
 ========================= */
 
 const memories = [
@@ -872,8 +905,6 @@ const memories = [
     text:"A new memory, another beautiful moment to remember."
 },
 
-/* 5th PHOTO - CORRECT FILENAME */
-
 {
     image:"images/CKN_7705.JPG",
     title:"Today ❤️",
@@ -881,7 +912,6 @@ const memories = [
 }
 
 ];
-
 
 let memoryIndex = 0;
 
@@ -891,16 +921,16 @@ function updateMemory(){
     const memory =
     memories[memoryIndex];
 
-    document.getElementById('memoryImage').src =
+    document.getElementById("memoryImage").src =
     memory.image;
 
-    document.getElementById('memoryNumber').innerText =
+    document.getElementById("memoryNumber").innerText =
     "MEMORY " + (memoryIndex + 1) + " / 5";
 
-    document.getElementById('memoryChapter').innerText =
+    document.getElementById("memoryChapter").innerText =
     memory.title;
 
-    document.getElementById('memoryText').innerText =
+    document.getElementById("memoryText").innerText =
     memory.text;
 }
 
@@ -943,12 +973,12 @@ function previousMemory(){
 
 function blowCandles(){
 
-    document.querySelectorAll('.flame')
+    document.querySelectorAll(".flame")
     .forEach(flame=>{
-        flame.classList.add('off');
+        flame.classList.add("off");
     });
 
-    document.getElementById('cakeNote').innerText =
+    document.getElementById("cakeNote").innerText =
     "Wish made! ✨ Happy Birthday! ❤️";
 
     createConfetti(60);
@@ -961,22 +991,18 @@ function blowCandles(){
 
 function openGift(){
 
-    const gift =
-    document.getElementById('gift');
+    document.getElementById("gift")
+        .classList.add("open");
 
-    const message =
-    document.getElementById('giftMessage');
-
-    gift.classList.add('open');
-
-    message.classList.add('show');
+    document.getElementById("giftMessage")
+        .classList.add("show");
 
     createConfetti(40);
 }
 
 
 /* =========================
-   TYPING MESSAGE
+   TYPING
 ========================= */
 
 const birthdayMessage =
@@ -996,7 +1022,6 @@ And always be the wonderful person you are.
 
 Happy Birthday, Ankita! ❤️✨`;
 
-
 let typingStarted = false;
 
 
@@ -1007,7 +1032,7 @@ function startTyping(){
     typingStarted = true;
 
     const element =
-    document.getElementById('typingText');
+    document.getElementById("typingText");
 
     let i = 0;
 
@@ -1024,7 +1049,6 @@ function startTyping(){
             i++;
 
             setTimeout(type,35);
-
         }
 
     }
@@ -1042,30 +1066,32 @@ let heartsStarted = false;
 function createHeart(){
 
     const heart =
-    document.createElement('div');
+    document.createElement("div");
 
-    heart.className = 'heart';
+    heart.className = "heart";
 
     const hearts = [
-        '❤️',
-        '💕',
-        '💖',
-        '💗',
-        '💓',
-        '✨'
+        "❤️",
+        "💕",
+        "💖",
+        "💗",
+        "💓",
+        "✨"
     ];
 
     heart.innerText =
-    hearts[Math.floor(Math.random()*hearts.length)];
+    hearts[
+        Math.floor(Math.random()*hearts.length)
+    ];
 
     heart.style.left =
-    Math.random()*100 + 'vw';
+    Math.random()*100 + "vw";
 
     heart.style.fontSize =
-    (15 + Math.random()*25) + 'px';
+    (15 + Math.random()*25) + "px";
 
     heart.style.animationDuration =
-    (4 + Math.random()*4) + 's';
+    (4 + Math.random()*4) + "s";
 
     document.body.appendChild(heart);
 
@@ -1096,34 +1122,28 @@ function createConfetti(amount){
     for(let i=0;i<amount;i++){
 
         const confetti =
-        document.createElement('div');
+        document.createElement("div");
 
         confetti.className =
-        'confetti';
+        "confetti";
 
         confetti.style.left =
-        Math.random()*100 + 'vw';
+        Math.random()*100 + "vw";
 
         confetti.style.animationDelay =
-        Math.random()*1.5 + 's';
-
-        confetti.style.transform =
-        'rotate(' +
-        Math.random()*360 +
-        'deg)';
+        Math.random()*1.5 + "s";
 
         document.body.appendChild(confetti);
 
         setTimeout(()=>{
             confetti.remove();
         },5000);
-
     }
 }
 
 
 /* =========================
-   FINAL CELEBRATION
+   CELEBRATE
 ========================= */
 
 function celebrate(){
@@ -1141,34 +1161,36 @@ function celebrate(){
 
 
 /* =========================
-   RESTART
+   REPLAY
 ========================= */
 
 function restart(){
-
-    currentPage = 1;
 
     memoryIndex = 0;
 
     typingStarted = false;
 
-    document.getElementById('typingText').innerHTML = "";
+    document.getElementById("typingText").innerHTML = "";
 
-    document.querySelectorAll('.flame')
+    document.querySelectorAll(".flame")
     .forEach(flame=>{
-        flame.classList.remove('off');
+        flame.classList.remove("off");
     });
 
-    document.getElementById('cakeNote').innerText =
-    "Tap the cake to blow out the candles 🕯️";
+    document.getElementById("cakeNote").innerText =
+    "Tap the button to blow out the candles 🕯️";
 
-    document.getElementById('gift')
-    .classList.remove('open');
+    document.getElementById("gift")
+        .classList.remove("open");
 
-    document.getElementById('giftMessage')
-    .classList.remove('show');
+    document.getElementById("giftMessage")
+        .classList.remove("show");
 
     updateMemory();
+
+    /*
+       Music will continue playing during Replay.
+    */
 
     nextPage(1);
 }
