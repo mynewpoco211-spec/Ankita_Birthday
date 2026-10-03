@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Ankita 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    color:white;
+    background:#080817;
+}
+
+.page{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.page.active{
+    display:flex;
+}
+
+.card{
+    width:100%;
+    max-width:520px;
+    padding:35px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 20px 70px rgba(0,0,0,.4);
+}
+
+h1{
+    font-size:clamp(38px,10vw,65px);
+    margin:15px 0;
+}
+
+h2{
+    font-size:32px;
+    margin:15px 0;
+}
+
+p{
+    line-height:1.7;
+    color:#ddd;
+}
+
+button{
+    margin-top:22px;
+    padding:15px 25px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#222;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+/* FIRST PAGE */
+
+#page1{
+    background:
+    radial-gradient(circle at top,#712f72,#171329 55%,#050509);
+}
+
+.heart{
+    font-size:65px;
+    animation:float 2s infinite;
+}
+
+@keyframes float{
+    50%{transform:translateY(-12px)}
+}
+
+/* CAKE */
+
+#page2{
+    background:
+    radial-gradient(circle,#64285e,#180d22 55%,#050509);
+}
+
+.cake{
+    position:relative;
+    width:240px;
+    height:190px;
+    margin:25px auto;
+}
+
+.cake-bottom{
+    position:absolute;
+    bottom:10px;
+    left:20px;
+    width:200px;
+    height:75px;
+    background:linear-gradient(#ff78ae,#c72e70);
+    border-radius:15px;
+}
+
+.cake-top{
+    position:absolute;
+    bottom:65px;
+    left:40px;
+    width:160px;
+    height:55px;
+    background:#ff9bc2;
+    border-radius:15px 15px 8px 8px;
+}
+
+.candle{
+    position:absolute;
+    bottom:120px;
+    width:14px;
+    height:45px;
+    background:#fff;
+    border-radius:5px;
+}
+
+.candle:nth-child(3){left:70px}
+.candle:nth-child(4){left:113px}
+.candle:nth-child(5){left:156px}
+
+.flame{
+    position:absolute;
+    width:18px;
+    height:25px;
+    left:-2px;
+    top:-24px;
+    background:#ffd34e;
+    border-radius:50%;
+    box-shadow:0 0 20px #ff9d00;
+    animation:flicker .4s infinite alternate;
+}
+
+@keyframes flicker{
+    to{
+        transform:scale(.8);
+    }
+}
+
+.off .flame{
+    display:none;
+}
+
+/* GIFT */
+
+#page3{
+    background:
+    radial-gradient(circle,#3b235e,#100c1c 60%,#050509);
+}
+
+.gift{
+    position:relative;
+    width:190px;
+    height:170px;
+    margin:30px auto;
+    cursor:pointer;
+    transition:.8s;
+}
+
+.box{
+    position:absolute;
+    bottom:0;
+    left:15px;
+    width:160px;
+    height:110px;
+    background:#d93668;
+    border-radius:5px;
+}
+
+.lid{
+    position:absolute;
+    top:30px;
+    left:5px;
+    width:180px;
+    height:38px;
+    background:#ff6590;
+    border-radius:5px;
+    z-index:3;
+    transition:.8s;
+}
+
+.ribbon{
+    position:absolute;
+    left:75px;
+    bottom:0;
+    width:40px;
+    height:110px;
+    background:#ffd75a;
+    z-index:2;
+}
+
+.gift.open .lid{
+    transform:translateY(-80px) rotate(-8deg);
+}
+
+.message{
+    display:none;
+}
+
+.gift.open + .message{
+    display:block;
+    animation:appear 1s;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* FINAL */
+
+#page4{
+    background:
+    radial-gradient(circle at top,#6d285d,#171026 55%,#050509);
+}
+
+.photos{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    margin:25px 0;
+}
+
+.photo{
+    min-width:120px;
+    height:140px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#ff75a8,#6c55e8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+}
+
+/* CONFETTI */
+
+#confetti{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+.confetti{
+    position:absolute;
+    width:8px;
+    height:14px;
+    animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="confetti"></div>
+
+<!-- PAGE 1 -->
+
+<section class="page active" id="page1">
+
+<div class="card">
+
+<div class="heart">💗</div>
+
+<p>A little surprise has been waiting for you...</p>
+
+<h1>Hey Ankita! ❤️</h1>
+
+<p>
+Before you go anywhere...<br>
+there's something special I made just for you.
+</p>
+
+<button onclick="nextPage(2)">
+Open Your Surprise ✨
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+<div class="card">
+
+<p>STEP 1 • MAKE A WISH</p>
+
+<h2>Happy Birthday! 🎂</h2>
+
+<div class="cake">
+
+<div class="cake-bottom"></div>
+
+<div class="cake-top"></div>
+
+<div class="candle">
+<div class="flame"></div>
+</div>
+
+<div class="candle">
+<div class="flame"></div>
+</div>
+
+<div class="candle">
+<div class="flame"></div>
+</div>
+
+</div>
+
+<p>
+Close your eyes...<br>
+Make a wish... ✨
+</p>
+
+<button onclick="blowCandles()">
+🕯️ Blow The Candles
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="page" id="page3">
+
+<div class="card">
+
+<p>STEP 2 • A LITTLE GIFT</p>
+
+<h2>This is for you 🎁</h2>
+
+<div class="gift" id="gift" onclick="openGift()">
+
+<div class="box"></div>
+
+<div class="ribbon"></div>
+
+<div class="lid"></div>
+
+</div>
+
+<p id="hint">
+Tap the gift box 🎁
+</p>
+
+<div class="message">
+
+<h2>💌 For You</h2>
+
+<p>
+May your smile always stay this beautiful,
+your heart always stay peaceful,
+and every dream you've been secretly wishing for
+come true.
+</p>
+
+<br>
+
+<p>
+<strong>
+You deserve a beautiful year ahead. ❤️
+</strong>
+</p>
+
+<button onclick="nextPage(4);celebrate()">
+Open Final Surprise 🌟
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section class="page" id="page4">
+
+<div class="card">
+
+<div class="heart">🥳</div>
+
+<p>YOUR SPECIAL DAY</p>
+
+<h1>
+Happy Birthday,<br>
+Ankita! 🎂
+</h1>
+
+<p>
+Another year.<br>
+Another chapter.<br>
+Another collection of beautiful memories.
+</p>
+
+<div class="photos">
+
+<div class="photo">📸</div>
+
+<div class="photo">💫</div>
+
+<div class="photo">❤️</div>
+
+<div class="photo">🎉</div>
+
+</div>
+
+<p>
+<strong>
+Keep smiling. Keep dreaming. Keep being you. ❤️
+</strong>
+</p>
+
+<button onclick="celebrate()">
+🎆 Celebrate Again!
+</button>
+
+<p style="margin-top:20px;font-size:13px">
+Made with ❤️ just for you
+</p>
+
+</div>
+
+</section>
+
+
+<script>
+
+let currentPage=1;
+
+
+/* PAGE CHANGE */
+
+function nextPage(number){
+
+document.getElementById("page"+currentPage)
+.classList.remove("active");
+
+currentPage=number;
+
+document.getElementById("page"+currentPage)
+.classList.add("active");
+
+if(number==2){
+confetti();
+}
+
+}
+
+
+/* BLOW CANDLES */
+
+function blowCandles(){
+
+document.querySelectorAll(".candle")
+.forEach(function(candle){
+
+candle.classList.add("off");
+
+});
+
+confetti();
+
+setTimeout(function(){
+
+nextPage(3);
+
+},1200);
+
+}
+
+
+/* OPEN GIFT */
+
+function openGift(){
+
+document.getElementById("gift")
+.classList.add("open");
+
+document.getElementById("hint")
+.style.display="none";
+
+confetti();
+
+}
+
+
+/* CONFETTI */
+
+function confetti(){
+
+for(let i=0;i<70;i++){
+
+let piece=document.createElement("div");
+
+piece.className="confetti";
+
+piece.style.left=Math.random()*100+"vw";
+
+piece.style.top="-20px";
+
+piece.style.animationDelay=
+Math.random()*1.5+"s";
+
+let colors=[
+"#ff6b9d",
+"#ffd34e",
+"#75e6ff",
+"#b99cff",
+"#7dff9b"
+];
+
+piece.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+document.getElementById("confetti")
+.appendChild(piece);
+
+setTimeout(function(){
+
+piece.remove();
+
+},4000);
+
+}
+
+}
+
+
+/* FIREWORK STYLE */
+
+function celebrate(){
+
+confetti();
+
+setTimeout(confetti,500);
+
+setTimeout(confetti,1000);
+
+}
+
+</script>
+
+</body>
+</html>
