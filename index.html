@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -87,6 +88,15 @@ p{
     margin-bottom:30px;
 }
 
+.small{
+    font-size:13px;
+    opacity:.65;
+}
+
+.glow{
+    text-shadow:0 0 15px rgba(255,100,190,.7);
+}
+
 .btn{
     border:none;
     padding:14px 25px;
@@ -105,16 +115,8 @@ p{
     transform:translateY(-3px) scale(1.03);
 }
 
-.glow{
-    text-shadow:0 0 15px rgba(255,100,190,.7);
-}
-
-.small{
-    font-size:13px;
-    opacity:.65;
-}
-
 /* MUSIC */
+
 .music-btn{
     position:fixed;
     top:15px;
@@ -132,6 +134,7 @@ p{
 }
 
 /* OPENING */
+
 .open-heart{
     font-size:80px;
     animation:heartbeat 1.3s infinite;
@@ -139,8 +142,12 @@ p{
 }
 
 @keyframes heartbeat{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.15)}
+    0%,100%{
+        transform:scale(1)
+    }
+    50%{
+        transform:scale(1.15)
+    }
 }
 
 .opening-card{
@@ -152,6 +159,7 @@ p{
 }
 
 /* MEMORY */
+
 .memory-title{
     margin-bottom:25px;
 }
@@ -196,6 +204,7 @@ p{
 }
 
 /* CAKE */
+
 .cake-area{
     position:relative;
     width:300px;
@@ -289,8 +298,12 @@ p{
 }
 
 @keyframes flame{
-    from{transform:rotate(-45deg) scale(1)}
-    to{transform:rotate(-40deg) scale(1.12)}
+    from{
+        transform:rotate(-45deg) scale(1)
+    }
+    to{
+        transform:rotate(-40deg) scale(1.12)
+    }
 }
 
 .flame.off{
@@ -302,6 +315,7 @@ p{
 }
 
 /* GIFT */
+
 .gift{
     width:230px;
     height:190px;
@@ -372,6 +386,7 @@ p{
 }
 
 /* FINAL */
+
 .final-photo{
     width:190px;
     height:190px;
@@ -396,7 +411,8 @@ p{
     font-size:16px;
 }
 
-/* PARTICLES */
+/* HEARTS */
+
 .heart{
     position:fixed;
     bottom:-30px;
@@ -419,6 +435,8 @@ p{
     }
 }
 
+/* CONFETTI */
+
 .confetti{
     position:fixed;
     width:8px;
@@ -436,6 +454,7 @@ p{
 }
 
 /* MOBILE */
+
 @media(max-width:600px){
 
     .page{
@@ -475,238 +494,283 @@ p{
         padding:13px 20px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🎵</button>
+<!-- MUSIC BUTTON -->
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+🎵
+</button>
 
 <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 
-<!-- PAGE 1 -->
+<!-- =========================
+     PAGE 1
+========================= -->
+
 <section class="page active" id="page1">
-    <div class="container">
-        <div class="opening-card">
 
-            <div class="open-heart">❤️</div>
+<div class="container">
 
-            <p class="small">A little surprise for</p>
+<div class="opening-card">
 
-            <h1 class="glow">Ankita</h1>
+<div class="open-heart">❤️</div>
 
-            <p class="subtitle">
-                Some memories are too beautiful<br>
-                to be forgotten...
-            </p>
+<p class="small">
+A little surprise for
+</p>
 
-            <button class="btn" onclick="nextPage(2)">
-                ✨ Open Your Surprise
-            </button>
+<h1 class="glow">
+Ankita
+</h1>
 
-        </div>
-    </div>
+<p class="subtitle">
+Some memories are too beautiful<br>
+to be forgotten...
+</p>
+
+<button class="btn" onclick="nextPage(2)">
+✨ Open Your Surprise
+</button>
+
+</div>
+
+</div>
+
 </section>
 
 
-<!-- PAGE 2 -->
+<!-- =========================
+     PAGE 2 - MEMORY
+========================= -->
+
 <section class="page" id="page2">
 
-    <div class="container">
+<div class="container">
 
-        <h2 class="memory-title">Your Memory Journey 📸</h2>
+<h2 class="memory-title">
+Your Memory Journey 📸
+</h2>
 
-        <p class="subtitle">
-            From little moments to beautiful memories...
-        </p>
+<p class="subtitle">
+From little moments to beautiful memories...
+</p>
 
-        <div class="memory-card">
+<div class="memory-card">
 
-            <img id="memoryImage" src="images/01-baby.jpg" alt="Ankita Memory">
+<img
+id="memoryImage"
+src="images/01-baby.jpg"
+alt="Ankita Memory"
+>
 
-            <div class="memory-number" id="memoryNumber">
-                MEMORY 1 / 5
-            </div>
+<div class="memory-number" id="memoryNumber">
+MEMORY 1 / 5
+</div>
 
-            <h3 class="memory-chapter" id="memoryChapter">
-                The Beginning ❤️
-            </h3>
+<h3 class="memory-chapter" id="memoryChapter">
+The Beginning ❤️
+</h3>
 
-            <p class="memory-text" id="memoryText">
-                Every beautiful story has a beginning...
-            </p>
+<p class="memory-text" id="memoryText">
+Every beautiful story has a beginning...
+</p>
 
-        </div>
+</div>
 
-        <div class="memory-buttons">
+<div class="memory-buttons">
 
-            <button class="btn" onclick="previousMemory()">
-                ← Previous
-            </button>
+<button class="btn" onclick="previousMemory()">
+← Previous
+</button>
 
-            <button class="btn" onclick="nextMemory()">
-                Next →
-            </button>
+<button class="btn" onclick="nextMemory()">
+Next →
+</button>
 
-        </div>
+</div>
 
-        <button class="btn" onclick="nextPage(3)">
-            🎂 Continue
-        </button>
+<button class="btn" onclick="nextPage(3)">
+🎂 Continue
+</button>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- PAGE 3 -->
+<!-- =========================
+     PAGE 3 - CAKE
+========================= -->
+
 <section class="page" id="page3">
 
-    <div class="container">
+<div class="container">
 
-        <h2>Make A Wish 🎂</h2>
+<h2>
+Make A Wish 🎂
+</h2>
 
-        <p class="subtitle">
-            Close your eyes, make a wish...<br>
-            then blow out the candles.
-        </p>
+<p class="subtitle">
+Close your eyes, make a wish...<br>
+then blow out the candles.
+</p>
 
-        <div class="cake-area">
+<div class="cake-area">
 
-            <div class="cake">
+<div class="cake">
 
-                <div class="candles">
+<div class="candles">
 
-                    <div class="candle">
-                        <div class="flame"></div>
-                    </div>
+<div class="candle">
+<div class="flame"></div>
+</div>
 
-                    <div class="candle">
-                        <div class="flame"></div>
-                    </div>
+<div class="candle">
+<div class="flame"></div>
+</div>
 
-                    <div class="candle">
-                        <div class="flame"></div>
-                    </div>
+<div class="candle">
+<div class="flame"></div>
+</div>
 
-                </div>
+</div>
 
-                <div class="cake-top"></div>
-                <div class="cake-body"></div>
+<div class="cake-top"></div>
 
-            </div>
+<div class="cake-body"></div>
 
-            <div class="plate"></div>
+</div>
 
-        </div>
+<div class="plate"></div>
 
-        <p class="cake-note" id="cakeNote">
-            Tap the cake to blow out the candles 🕯️
-        </p>
+</div>
 
-        <button class="btn" onclick="blowCandles()">
-            🕯️ Blow Candles
-        </button>
+<p class="cake-note" id="cakeNote">
+Tap the cake to blow out the candles 🕯️
+</p>
 
-        <br>
+<button class="btn" onclick="blowCandles()">
+🕯️ Blow Candles
+</button>
 
-        <button class="btn" onclick="nextPage(4)">
-            🎁 Continue
-        </button>
+<br>
 
-    </div>
+<button class="btn" onclick="nextPage(4)">
+🎁 Continue
+</button>
+
+</div>
 
 </section>
 
 
-<!-- PAGE 4 -->
+<!-- =========================
+     PAGE 4 - GIFT
+========================= -->
+
 <section class="page" id="page4">
 
-    <div class="container">
+<div class="container">
 
-        <h2>There's Something For You 🎁</h2>
+<h2>
+There's Something For You 🎁
+</h2>
 
-        <p class="subtitle">
-            A little gift... just for you.
-        </p>
+<p class="subtitle">
+A little gift... just for you.
+</p>
 
-        <div class="gift" id="gift" onclick="openGift()">
+<div class="gift" id="gift" onclick="openGift()">
 
-            <div class="gift-box"></div>
+<div class="gift-box"></div>
 
-            <div class="gift-lid"></div>
+<div class="gift-lid"></div>
 
-        </div>
+</div>
 
-        <button class="btn" onclick="openGift()">
-            🎁 Open Gift
-        </button>
+<button class="btn" onclick="openGift()">
+🎁 Open Gift
+</button>
 
-        <div class="gift-message" id="giftMessage">
+<div class="gift-message" id="giftMessage">
 
-            <h3>For You, Ankita ❤️</h3>
+<h3>
+For You, Ankita ❤️
+</h3>
 
-            <br>
+<br>
 
-            <p>
-                May every day of your life be filled with
-                happiness, love, laughter and beautiful memories.
-                <br><br>
-                Keep smiling, keep shining and always stay the
-                wonderful person you are. ✨
-            </p>
+<p>
+May every day of your life be filled with
+happiness, love, laughter and beautiful memories.
 
-        </div>
+<br><br>
 
-        <br>
+Keep smiling, keep shining and always stay the
+wonderful person you are. ✨
+</p>
 
-        <button class="btn" onclick="nextPage(5)">
-            ❤️ One Last Surprise
-        </button>
+</div>
 
-    </div>
+<br>
+
+<button class="btn" onclick="nextPage(5)">
+❤️ One Last Surprise
+</button>
+
+</div>
 
 </section>
 
 
-<!-- PAGE 5 -->
+<!-- =========================
+     PAGE 5 - FINAL
+========================= -->
+
 <section class="page" id="page5">
 
-    <div class="container">
+<div class="container">
 
-        <img
-            class="final-photo"
-            src="images/CNK_7705.JPG"
-            alt="Ankita"
-        >
+<!-- IMPORTANT: CORRECT PHOTO NAME -->
 
-        <p class="small">
-            Today is your special day...
-        </p>
+<img
+class="final-photo"
+src="images/CKN_7705.JPG"
+alt="Ankita"
+>
 
-        <h1 class="glow">
-            Happy Birthday<br>
-            Ankita! 🎂❤️
-        </h1>
+<p class="small">
+Today is your special day...
+</p>
 
-        <div class="message-box">
+<h1 class="glow">
+Happy Birthday<br>
+Ankita! 🎂❤️
+</h1>
 
-            <p class="typing" id="typingText"></p>
+<div class="message-box">
 
-        </div>
+<p class="typing" id="typingText"></p>
 
-        <button class="btn" onclick="celebrate()">
-            🎉 Celebrate
-        </button>
+</div>
 
-        <button class="btn" onclick="restart()">
-            🔄 Replay
-        </button>
+<button class="btn" onclick="celebrate()">
+🎉 Celebrate
+</button>
 
-    </div>
+<button class="btn" onclick="restart()">
+🔄 Replay
+</button>
+
+</div>
 
 </section>
 
@@ -731,8 +795,10 @@ function nextPage(pageNumber){
     currentPage = pageNumber;
 
     if(pageNumber === 5){
+
         startTyping();
         startHearts();
+
     }
 
     window.scrollTo({
@@ -746,8 +812,11 @@ function nextPage(pageNumber){
    MUSIC
 ========================= */
 
-const music = document.getElementById('music');
-const musicBtn = document.getElementById('musicBtn');
+const music =
+document.getElementById('music');
+
+const musicBtn =
+document.getElementById('musicBtn');
 
 let musicPlaying = false;
 
@@ -756,7 +825,9 @@ function toggleMusic(){
     if(musicPlaying){
 
         music.pause();
+
         musicPlaying = false;
+
         musicBtn.innerHTML = "🎵";
 
     }else{
@@ -764,6 +835,7 @@ function toggleMusic(){
         music.play().catch(()=>{});
 
         musicPlaying = true;
+
         musicBtn.innerHTML = "🔊";
 
     }
@@ -776,56 +848,62 @@ function toggleMusic(){
 
 const memories = [
 
-    {
-        image:"images/01-baby.jpg",
-        title:"The Beginning ❤️",
-        text:"The little smile that started a beautiful story..."
-    },
+{
+    image:"images/01-baby.jpg",
+    title:"The Beginning ❤️",
+    text:"The little smile that started a beautiful story..."
+},
 
-    {
-        image:"images/02-childhood.jpg",
-        title:"Beautiful Childhood 🌸",
-        text:"Growing up, collecting little moments and big memories..."
-    },
+{
+    image:"images/02-childhood.jpg",
+    title:"Beautiful Childhood 🌸",
+    text:"Growing up, collecting little moments and big memories..."
+},
 
-    {
-        image:"images/03-saree.jpg",
-        title:"Growing Beautiful ✨",
-        text:"Time passed, but that beautiful smile stayed the same."
-    },
+{
+    image:"images/03-saree.jpg",
+    title:"Growing Beautiful ✨",
+    text:"Time passed, but that beautiful smile stayed the same."
+},
 
-    {
-        image:"images/IMG_20251021_192832.jpg",
-        title:"Another Beautiful Chapter 💕",
-        text:"A new memory, another beautiful moment to remember."
-    },
+{
+    image:"images/IMG_20251021_192832.jpg",
+    title:"Another Beautiful Chapter 💕",
+    text:"A new memory, another beautiful moment to remember."
+},
 
-    {
-        image:"images/CNK_7705.JPG",
-        title:"Today ❤️",
-        text:"And here you are today — more beautiful, more wonderful, and still shining."
-    }
+/* 5th PHOTO - CORRECT FILENAME */
+
+{
+    image:"images/CKN_7705.JPG",
+    title:"Today ❤️",
+    text:"And here you are today — more beautiful, more wonderful, and still shining."
+}
 
 ];
 
+
 let memoryIndex = 0;
+
 
 function updateMemory(){
 
-    const memory = memories[memoryIndex];
+    const memory =
+    memories[memoryIndex];
 
     document.getElementById('memoryImage').src =
-        memory.image;
+    memory.image;
 
     document.getElementById('memoryNumber').innerText =
-        "MEMORY " + (memoryIndex + 1) + " / 5";
+    "MEMORY " + (memoryIndex + 1) + " / 5";
 
     document.getElementById('memoryChapter').innerText =
-        memory.title;
+    memory.title;
 
     document.getElementById('memoryText').innerText =
-        memory.text;
+    memory.text;
 }
+
 
 function nextMemory(){
 
@@ -841,6 +919,7 @@ function nextMemory(){
 
     updateMemory();
 }
+
 
 function previousMemory(){
 
@@ -865,12 +944,12 @@ function previousMemory(){
 function blowCandles(){
 
     document.querySelectorAll('.flame')
-        .forEach(flame=>{
-            flame.classList.add('off');
-        });
+    .forEach(flame=>{
+        flame.classList.add('off');
+    });
 
     document.getElementById('cakeNote').innerText =
-        "Wish made! ✨ Happy Birthday! ❤️";
+    "Wish made! ✨ Happy Birthday! ❤️";
 
     createConfetti(60);
 }
@@ -880,21 +959,17 @@ function blowCandles(){
    GIFT
 ========================= */
 
-let giftOpened = false;
-
 function openGift(){
 
     const gift =
-        document.getElementById('gift');
+    document.getElementById('gift');
 
     const message =
-        document.getElementById('giftMessage');
+    document.getElementById('giftMessage');
 
     gift.classList.add('open');
 
     message.classList.add('show');
-
-    giftOpened = true;
 
     createConfetti(40);
 }
@@ -921,7 +996,9 @@ And always be the wonderful person you are.
 
 Happy Birthday, Ankita! ❤️✨`;
 
+
 let typingStarted = false;
+
 
 function startTyping(){
 
@@ -930,7 +1007,7 @@ function startTyping(){
     typingStarted = true;
 
     const element =
-        document.getElementById('typingText');
+    document.getElementById('typingText');
 
     let i = 0;
 
@@ -939,10 +1016,10 @@ function startTyping(){
         if(i < birthdayMessage.length){
 
             element.innerHTML +=
-                birthdayMessage.charAt(i)
-                === "\n"
-                ? "<br>"
-                : birthdayMessage.charAt(i);
+            birthdayMessage.charAt(i)
+            === "\n"
+            ? "<br>"
+            : birthdayMessage.charAt(i);
 
             i++;
 
@@ -960,10 +1037,12 @@ function startTyping(){
    HEARTS
 ========================= */
 
+let heartsStarted = false;
+
 function createHeart(){
 
     const heart =
-        document.createElement('div');
+    document.createElement('div');
 
     heart.className = 'heart';
 
@@ -977,16 +1056,16 @@ function createHeart(){
     ];
 
     heart.innerText =
-        hearts[Math.floor(Math.random()*hearts.length)];
+    hearts[Math.floor(Math.random()*hearts.length)];
 
     heart.style.left =
-        Math.random()*100 + 'vw';
+    Math.random()*100 + 'vw';
 
     heart.style.fontSize =
-        (15 + Math.random()*25) + 'px';
+    (15 + Math.random()*25) + 'px';
 
     heart.style.animationDuration =
-        (4 + Math.random()*4) + 's';
+    (4 + Math.random()*4) + 's';
 
     document.body.appendChild(heart);
 
@@ -995,7 +1074,12 @@ function createHeart(){
     },8000);
 }
 
+
 function startHearts(){
+
+    if(heartsStarted) return;
+
+    heartsStarted = true;
 
     setInterval(()=>{
         createHeart();
@@ -1012,48 +1096,47 @@ function createConfetti(amount){
     for(let i=0;i<amount;i++){
 
         const confetti =
-            document.createElement('div');
+        document.createElement('div');
 
         confetti.className =
-            'confetti';
+        'confetti';
 
         confetti.style.left =
-            Math.random()*100 + 'vw';
+        Math.random()*100 + 'vw';
 
         confetti.style.animationDelay =
-            Math.random()*1.5 + 's';
+        Math.random()*1.5 + 's';
 
         confetti.style.transform =
-            'rotate(' +
-            Math.random()*360 +
-            'deg)';
+        'rotate(' +
+        Math.random()*360 +
+        'deg)';
 
         document.body.appendChild(confetti);
 
         setTimeout(()=>{
             confetti.remove();
         },5000);
+
     }
 }
 
 
 /* =========================
-   CELEBRATION
+   FINAL CELEBRATION
 ========================= */
 
 function celebrate(){
 
     createConfetti(150);
 
-    for(let i=0;i<20;i++){
+    for(let i=0;i<25;i++){
 
         setTimeout(()=>{
             createHeart();
         },i*100);
 
     }
-
-    alert("🎉 Happy Birthday Ankita! ❤️");
 }
 
 
@@ -1063,27 +1146,29 @@ function celebrate(){
 
 function restart(){
 
-    memoryIndex = 0;
+    currentPage = 1;
 
-    updateMemory();
+    memoryIndex = 0;
 
     typingStarted = false;
 
     document.getElementById('typingText').innerHTML = "";
 
     document.querySelectorAll('.flame')
-        .forEach(flame=>{
-            flame.classList.remove('off');
-        });
+    .forEach(flame=>{
+        flame.classList.remove('off');
+    });
 
     document.getElementById('cakeNote').innerText =
-        "Tap the cake to blow out the candles 🕯️";
+    "Tap the cake to blow out the candles 🕯️";
 
     document.getElementById('gift')
-        .classList.remove('open');
+    .classList.remove('open');
 
     document.getElementById('giftMessage')
-        .classList.remove('show');
+    .classList.remove('show');
+
+    updateMemory();
 
     nextPage(1);
 }
